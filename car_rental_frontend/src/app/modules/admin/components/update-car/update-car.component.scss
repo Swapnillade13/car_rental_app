@@ -1,0 +1,94 @@
+.child {
+    padding: 50px;
+    width: 100%;
+    background-color: white;
+    max-width: 680px;
+    box-shadow: 1px 1px 15px -7px rgba(0,0,0, 0.1);
+    border-radius: 5px;
+}
+
+.parent {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgDiv {
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+
+.profile-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    height: 180px;
+    width: 180px;
+    margin-bottom: 5px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.upload-label {
+    cursor: pointer;
+}
+
+.upload-icon {
+    width: 70px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+.login-form-button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+nz-row {
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .file-upload-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        input[type="file"] {
+            display: none;
+        }
+    }
+
+    .image-preview {
+        margin-top: 10px;
+        margin-left: 10px;
+
+        .circle-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}

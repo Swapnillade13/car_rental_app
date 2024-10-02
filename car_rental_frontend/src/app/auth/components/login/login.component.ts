@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonComponents } from '../../../CommonComponents';
 import { AuthService } from '../../service/auth/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { StorageService } from '../../service/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -33,10 +34,18 @@ export class LoginComponent {
       console.log(res);
       if(res.jwt != null) {
         this.message.success("Successfully LOGIN!!!", {nzDuration: 5000 });
-        if(res.userRole === "ADMIN") {
-          this.route.navigateByUrl("/admin");
+        const user = {
+          userId : res.userId,
+          role : res.userRole
+        }
+        StorageService.saveToken(res.jwt);
+        StorageService.saveUser(user);
+        if(StorageService.isAdminLoggedIn()) {
+          this.route.navigateByUrl("/admin/dashboard");
+        } else if(StorageService.isCustomerLoggedIn()) {
+          this.route.navigateByUrl("/customer/dashboard");
         } else {
-          this.route.navigateByUrl("/customer");
+          this.message.error("Bad Credential!!!", {nzDuration: 5000 });
         }
       } else {
         this.message.error("Something went wrong!!!", {nzDuration: 5000 });

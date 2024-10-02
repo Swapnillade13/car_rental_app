@@ -7,6 +7,6 @@ import { CustomerDashboardComponent } from './modules/customer/components/custom
 export const routes: Routes = [
     {path : "register", component: SingupComponent},
     {path : "login", component : LoginComponent},
-    {path : "admin", component : AdminDashboardComponent},
-    {path : "customer", component : CustomerDashboardComponent}
+    {path : "admin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule)},
+    {path : "customer", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule)}
 ];
